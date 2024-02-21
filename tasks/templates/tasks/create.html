@@ -6,7 +6,7 @@
 
     <div class="container">
         <h1>Create A Tasks:</h1>
-        <form action="{% url 'work:create' %}" method="post" class="border p-3" multipart>
+        <form action="{% url 'work:create' %}" method="post" class="border p-3" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset>
                 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
