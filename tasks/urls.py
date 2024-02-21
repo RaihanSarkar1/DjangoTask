@@ -5,4 +5,6 @@ from . import views
 app_name = "tasks"
 urlpatterns = [
     path("", views.index, name="index"),
+    path("create", views.create, name="addTask"),
+    path('items/', views.TaskListView.as_view(), name='Task-list'),
 ]
