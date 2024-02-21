@@ -11,7 +11,7 @@ class Task(models.Model):
     description = models.TextField()
     photos = models.FileField(blank=True)
     created_at = models.DateTimeField(auto_now=True)
-    due_date = models.DateField()
+    due_date = models.DateTimeField(auto_now=False)
     priority = models.CharField(max_length=6, choices=priority_choices, default='LOW')
     complete = models.BooleanField(default=False)
     
