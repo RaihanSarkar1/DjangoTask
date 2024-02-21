@@ -42,7 +42,7 @@
                             <label class="custom-file-label" for="imageInput">Choose Image</label>
                         </div>
                         <div class="custom-file mt-3">
-                            <input type="file" class="custom-file-input" id="imageInput" aria-describedby="imageAddon" multiple accept="image/jpeg">
+                            <input type="file" class="custom-file-input" id="imageInput" name="image[]" aria-describedby="imageAddon" multiple accept="image/jpeg">
                         </div>
                     </div>
                     
@@ -51,7 +51,7 @@
                     <div class="form-group">
                        <label class="control-label">Due Date</label>
                        <div class='input-group date' id='datetimepicker1'>
-                           <input type='text' class="form-control" />
+                           <input type='text' class="form-control" name="date" />
                            <span class="input-group-addon">
                                <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -61,18 +61,16 @@
                 
                 <div class="">
                     <label class="control-label">Priority</label>
-                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="priority" id="radioOption1" value="low">
-                        <label class="form-check-label" for="radioOption1">Low</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="priority" id="radioOption2" value="medium">
-                        <label class="form-check-label" for="radioOption2">Normal</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="priority" id="radioOption3" value="high">
-                        <label class="form-check-label" for="radioOption3">High</label>
-                    </div>
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="priority" id="priority1" value="LOW" autocomplete="off" checked>
+                        <label class="btn btn-outline-primary" for="priority1">Low</label>
+                      
+                        <input type="radio" class="btn-check" name="priority" id="priority2" value="MEDIUM" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="priority2">Normal</label>
+                      
+                        <input type="radio" class="btn-check" name="priority" id="priority3" value="HIGH" autocomplete="off">
+                        <label class="btn btn-outline-primary" for="priority3">High</label>
+                      </div>
                 </div>
                 
 

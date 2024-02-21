@@ -7,7 +7,21 @@
         {% if  tasks %}
             <ul>
                 {% for task in tasks %}
-                    <li><a href="">{{ task }}</li>
+                <li>
+                    
+                    <div class="row border">
+                        <div class="col-6">
+                            <a href={% url 'work:details' task.id %}>{{ task }}</a>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="markAsComplete" value="task{{ task.id }}">
+                                <label class="form-check-label" for="markAsComplete">Mark as Complete</label>
+                            <div>
+                        </div>
+                    </div>
+
+                    </li>
                 {%endfor%}
             </ul>
             {% else %}
@@ -16,4 +30,21 @@
         <a href={% url 'work:create' %} class="btn btn-primary">Add a Task<a>
     </div>
 
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        $(document).ready(function() {
+            $('#markAsComplete').change(function() {
+                // Handle checkbox state change here
+                if (this.checked) {
+                    // Checkbox is checked
+                    console.log('Marked as complete');
+                } else {
+                    // Checkbox is unchecked
+                    console.log('Not marked as complete');
+                }
+            });
+        });        
+    </script>
 {% endblock %}

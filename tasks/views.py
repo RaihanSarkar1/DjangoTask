@@ -18,7 +18,15 @@ def index(request):
 
 
 def create(request):
-    return render(request, "tasks/create.html")
+    if request.method == "POST":
+        title = request.title
+        description = request.description
+        date = request.date
+        
+    return HttpResponse(request)
+
+def detail(request):
+    pass
 
 # Rest API
     
