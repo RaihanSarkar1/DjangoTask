@@ -1,19 +1,97 @@
 {% extends "tasks/layout.html" %}
+{% block headers %}
 
+<!-- Include jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<!-- Include Moment.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+
+<!-- Include Bootstrap JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Include Bootstrap DateTimePicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Include Bootstrap DateTimePicker CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+
+{% endblock %}
 {% block body %}
 
     <div class="container">
         <h1>Create A Tasks:</h1>
-        {% if  tasks %}
-            <ul>
-                {% for task in tasks %}
-                    <li><a href="">{{ task }}</li>
-                {%endfor%}
-            </ul>
-            {% else %}
-            <h3> No Tasks </h3>
-        {% endif %}
-        <a href={% url 'task_app:addTask' %} class="btn btn-primary">Add a Task<a>
-    </div>
+        <form action="{% url 'work:create' %}" method="post" class="border p-3" multipart>
+            {% csrf_token %}
+            <fieldset>
+                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label><br>
+                    <input type="text" class="form-control" name="title" id="title"></input>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label><br>
+                    <textarea type="text" class="form-control" name="description" id="description"></textarea>
+                </div>
+                <div class="input-group mb-3">
+                    
+                    <div class="row">
+                        <div>
+                            <label class="custom-file-label" for="imageInput">Choose Image</label>
+                        </div>
+                        <div class="custom-file mt-3">
+                            <input type="file" class="custom-file-input" id="imageInput" aria-describedby="imageAddon" multiple accept="image/jpeg">
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class='col-md-12 mb-3'>
+                    <div class="form-group">
+                       <label class="control-label">Due Date</label>
+                       <div class='input-group date' id='datetimepicker1'>
+                           <input type='text' class="form-control" />
+                           <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="">
+                    <label class="control-label">Priority</label>
+                     <div class="form-check">
+                        <input class="form-check-input" type="radio" name="priority" id="radioOption1" value="low">
+                        <label class="form-check-label" for="radioOption1">Low</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="priority" id="radioOption2" value="medium">
+                        <label class="form-check-label" for="radioOption2">Normal</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="priority" id="radioOption3" value="high">
+                        <label class="form-check-label" for="radioOption3">High</label>
+                    </div>
+                </div>
+                
+
+                 
+                
+  
+            </fieldset>
+            <div class="mb-3 mt-3">
+                <button type="submit" class="btn btn-success">Add Task</button>
+            </div>
+        </form>
+
+{% endblock %}
+
+{% block scripts%}
+<script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
 
 {% endblock %}
