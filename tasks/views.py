@@ -23,7 +23,7 @@ def create(request):
         description = request.description
         date = request.date
         
-    return HttpResponse(request)
+    return render(request, "tasks/create.html")
 
 def detail(request):
     pass
