@@ -25,17 +25,19 @@ def create(request):
         description = request.POST['description']
         date = request.POST['date']
         priority = request.POST['priority']
-        uploaded_images = request.FILES.getlist('image')  
+        uploaded_images = request.FILES.getlist('images')  
         print(uploaded_images)
         task = Task(title=title,description=description,due_date=date,priority=priority)
         task.save()
         for image in uploaded_images:
             # Handle upload of images
             print(image,uploaded_images)
-            new_image = Image(task=task.id, images=image)
-            new_image.save()
+            new_image = Image.objects.create(
+                task= task,
+                images = image,
+            )
             
-        return HttpResponseRedirect(reverse("MyTM:index"),{
+        return HttpResponseRedirect(reverse("mylist:index"),{
             'success': "Task Added Sucessfully",
         })
         
