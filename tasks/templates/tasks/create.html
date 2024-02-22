@@ -1,79 +1,87 @@
 {% extends "tasks/layout.html" %}
 {% block headers %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'tasks/datepicker/css/bootstrap-datepicker.min.css' %}">
 
 {% endblock %}
 {% block body %}
 
 
+        <h2><a href=" {% url 'MyTM:index' %}">Back to All Tasks<a></h2>
 
-{{ form.media }}
     <div class="container">
-        <h1>Create A Tasks:</h1>
-        <form action="{% url 'MyTM:create' %}" method="post" class="border p-3" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-
-            <fieldset>
-                {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-                <div class="mb-3">
-                    <label for="title" class="form-label">Title</label><br>
-                    <input type="text" class="form-control" name="title" id="title"></input>
-                </div>
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label><br>
-                    <textarea type="text" class="form-control" name="description" id="description"></textarea>
-                </div>
-                <div class="input-group mb-3">
-                    
-                    <div class="row">
-                        <div>
-                            <label class="custom-file-label" for="imageInput">Choose Image</label>
+        <div class="row">
+            <h1>Create A Tasks:</h1>
+            <form action="{% url 'MyTM:create' %}" method="post" class="border p-5" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset>
+                    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label><br>
+                        <input type="text" class="form-control" name="title" id="title"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label><br>
+                        <textarea type="text" class="form-control" name="description" id="description"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+            
+                        <div class="row">
+                            <div>
+                                <label class="custom-file-label" for="imageInput">Choose Image</label>
+                            </div>
+                            <div class="custom-file mt-3">
+                                <input type="file" class="custom-file-input" id="imageInput" name="image[]" aria-describedby="imageAddon" multiple accept="image/jpeg">
+                            </div>
                         </div>
-                        <div class="custom-file mt-3">
-                            <input type="file" class="custom-file-input" id="imageInput" name="image[]" aria-describedby="imageAddon" multiple accept="image/jpeg">
+            
+                    </div>
+                    <div class='col-md-12 mb-3'>
+                        <div class="form-group">
+                           <label class="control-label">Due Date</label>
+                           <div class='input-group date' id='datetimepicker1'>
+                               <span class="input-group-addon">
+                                   <i class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                               <input type='text' class="form-control" name="date" id="datepicker" />
+                            </div>
                         </div>
                     </div>
-                    
-                </div>
-                <div class='col-md-12 mb-3'>
-                    <div class="form-group">
-                       <label class="control-label">Due Date</label>
-                       <div class='input-group date' id='datetimepicker1'>
-                           <input type='text' class="form-control" name="date" />
-                           <span class="input-group-addon">
-                               <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
+            
+                    <div class="">
+                        <label class="control-label">Priority</label>
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="priority" id="priority1" value="LOW" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="priority1">Low</label>
+            
+                            <input type="radio" class="btn-check" name="priority" id="priority2" value="MEDIUM" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="priority2">Normal</label>
+            
+                            <input type="radio" class="btn-check" name="priority" id="priority3" value="HIGH" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="priority3">High</label>
+                          </div>
                     </div>
+            
+            
+            
+                </fieldset>
+                <div class="mb-3 mt-3">
+                    <button type="submit" class="btn btn-success">Add Task</button>
                 </div>
-                
-                <div class="">
-                    <label class="control-label">Priority</label>
-                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                        <input type="radio" class="btn-check" name="priority" id="priority1" value="LOW" autocomplete="off" checked>
-                        <label class="btn btn-outline-primary" for="priority1">Low</label>
-                      
-                        <input type="radio" class="btn-check" name="priority" id="priority2" value="MEDIUM" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="priority2">Normal</label>
-                      
-                        <input type="radio" class="btn-check" name="priority" id="priority3" value="HIGH" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="priority3">High</label>
-                      </div>
-                </div>
-                
-
-                 
-                
-  
-            </fieldset>
-            <div class="mb-3 mt-3">
-                <button type="submit" class="btn btn-success">Add Task</button>
-            </div>
-        </form>
+            </form>
+        </div>
 
 {% endblock %}
 
 {% block scripts%}
+<script src="{% static 'tasks/datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+
+<script>
+    $('.date').datepicker({
+        autoclose: true,
+        format: 'yyyy/mm/dd',
+        todayHighlight: true,
+    });
+</script>
 
 {% endblock %}

@@ -3,16 +3,21 @@
 {% block body %}
 
     <div class="container">
+        <h2><a href=" {% url 'MyTM:index' %}">Back to All Tasks<a></h2>
 
         <div class="row d-flex justify-content-center align-items-center">
-            <h1><a href=" {% url 'MyTM:index' %}">Tasks:<a></h1>
             <div class="col col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title mb-3">{{ task.title }}</h4>
                         <h6>Details: </h6>
-                        <p class="card-text">{{ task.description }}</p>
+                        <p class="card-text mb-3">{{ task.description }}</p>
 
+                        <h6>Priority: </h6>
+                        <div class="col-auto d-flex align-items-center rounded bg-white mb-3">
+                            <i class="fa fa-list-ol my-2 px-2 text-info btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
+                            <h6 class="text my-2 pr-2">{{ task.priority}}</h6>
+                        </div>
                         <h6>Created At: </h6>
                         <div class="col-auto d-flex align-items-center rounded bg-white border border-info">
                             <i class="fa fa-clock my-2 px-2 text-info btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
