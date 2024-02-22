@@ -1,4 +1,7 @@
-## Django Tasks Test
+## Django Tasks Manager App
+
+# To install all requirement use
+- pip install -r requirements.txt
 
 #Rest API Usage
 
