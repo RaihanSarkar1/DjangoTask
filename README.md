@@ -1,4 +1,12 @@
-# Django Tasks Manager App
+# Django Tasks Manager App (under development)
+
+## Features
+
+1. Create Task add multiple images and due date
+2. View All Tasks
+3. Delete or Edit and existing task
+4. View details of a task
+5. Set priority of a task
 
 ## How to run the project
 
@@ -41,3 +49,4 @@ To access and list all tasks in the tasks app the url is:
 
 To create a task the url is:
 * api/create
+
