@@ -7,12 +7,12 @@
 {% block body %}
 
 
-        <h2><a href=" {% url 'MyTM:index' %}">Back to All Tasks<a></h2>
+        <h2><a href=" {% url 'mylist:index' %}">Back to All Tasks<a></h2>
 
     <div class="container">
         <div class="row">
             <h1>Create A Tasks:</h1>
-            <form action="{% url 'MyTM:create' %}" method="post" class="border p-5" enctype="multipart/form-data">
+            <form action="{% url 'mylist:create' %}" method="post" class="border p-5" enctype="multipart/form-data">
                 {% csrf_token %}
                 <fieldset>
                     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -79,7 +79,7 @@
 <script>
     $('.date').datepicker({
         autoclose: true,
-        format: 'yyyy/mm/dd',
+        format: 'yyyy-mm-dd',
         todayHighlight: true,
     });
 </script>

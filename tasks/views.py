@@ -17,6 +17,7 @@ def index(request):
     }
     return render(request,"tasks/index.html", context)
 
+    
 
 def create(request):
     if request.method == "POST":
@@ -24,15 +25,17 @@ def create(request):
         description = request.POST['description']
         date = request.POST['date']
         priority = request.POST['priority']
-        uploaded_images = request.FILES.getlist('image')  # Replace with your actual field name
+        uploaded_images = request.FILES.getlist('image')  
+        print(uploaded_images)
         task = Task(title=title,description=description,due_date=date,priority=priority)
         task.save()
         for image in uploaded_images:
             # Handle upload of images
-            image_obj = Image(task=task,images=image)
-            image_obj.save()
+            print(image,uploaded_images)
+            new_image = Image(task=task.id, images=image)
+            new_image.save()
             
-        return HttpResponseRedirect(reverse("work:index"),{
+        return HttpResponseRedirect(reverse("MyTM:index"),{
             'success': "Task Added Sucessfully",
         })
         
@@ -47,6 +50,11 @@ def detail(request, id):
         'task': task,
         'images': images
     })
+    
+def delete(request, id):
+    thetask = Task.objects.get(pk=id)
+    thetask.delete()
+    return HttpResponseRedirect('/')
 
 # Rest API
     
