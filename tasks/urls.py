@@ -9,6 +9,7 @@ urlpatterns = [
     path("create", views.create, name="create"),
     path("<int:id>/detail", views.detail, name="detail"),
     path("<int:id>/delete", views.delete, name="delete"),
+    path("<int:id>/update", views.update, name="update"),
     
     # API URLS
     path('list/', views.TaskListView.as_view(), name='Task-list'),

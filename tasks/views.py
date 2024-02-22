@@ -58,6 +58,32 @@ def delete(request, id):
     thetask.delete()
     return HttpResponseRedirect('/')
 
+def update(request, id):
+    if request.method == "POST":
+        task_obj = Task.objects.get(pk=id)
+        task_obj.title = request.POST['title']
+        task_obj.description = request.POST['description']
+        task_obj.date = request.POST['date']
+        task_obj.priority = request.POST['priority']
+        uploaded_images = request.FILES.getlist('images')  
+        task_obj.save()
+        for image in uploaded_images:
+            # Handle upload of images
+            print(image,uploaded_images)
+            new_image = Image.objects.create(
+                task= task,
+                images = image,
+            )
+            
+        return HttpResponseRedirect(reverse("mylist:index"),{
+            'success': "Task Added Sucessfully",
+        })
+            
+    task = Task.objects.get(pk=id)
+    return render(request, "tasks/update.html", {
+        'task': task,
+    })
+
 # Rest API
     
 class TaskListView(generics.ListAPIView):
