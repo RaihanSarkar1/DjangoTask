@@ -1,37 +1,12 @@
-window.onload = function () {
-    bootlint.showLintReportForCurrentDocument([], {
-        hasProblems: false,
-        problemFree: false
-    });
+$(document).ready(function () {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    function formatDate(date) {
-        return (
-            date.getDate() +
-            "/" +
-            (date.getMonth() + 1) +
-            "/" +
-            date.getFullYear()
-        );
-    }
 
-    var currentDate = formatDate(new Date());
-
-    $(".due-date-button").datepicker({
-        format: "dd/mm/yyyy",
-        autoclose: true,
-        todayHighlight: true,
-        startDate: currentDate,
-        orientation: "bottom right"
+    $(".edit-todo-input").on("click", function (event) {
+        console.log("clicked"); 
+        var url = $(this).data("target");
+        console.log(url);
+        location.replace(url);
     });
-
-    $(".due-date-button").on("click", function (event) {
-        $(".due-date-button")
-            .datepicker("show")
-            .on("changeDate", function (dateChangeEvent) {
-                $(".due-date-button").datepicker("hide");
-                $(".due-date-label").text(formatDate(dateChangeEvent.date));
-            });
-    });
-};
+});

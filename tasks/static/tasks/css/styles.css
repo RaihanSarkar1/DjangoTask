@@ -7,7 +7,7 @@ body {
 
 .add-todo-input,
 .edit-todo-input {
-    outline: none;
+    outline: slateblue;
 }
 
 .add-todo-input:focus,

@@ -2,34 +2,6 @@
 
 {% block body %}
 
-    <div class="container">
-        <h1>Tasks:</h1>
-        {% if  tasks %}
-            <ul>
-                {% for task in tasks %}
-                <li>
-                    
-                    <div class="row border">
-                        <div class="col-6">
-                            <a href={% url 'work:detail' task.id %}>{{ task }}</a>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="markAsComplete" value="task{{ task.id }}">
-                                <label class="form-check-label" for="markAsComplete">Mark as Complete</label>
-                            <div>
-                        </div>
-                    </div>
-
-                    </li>
-                {%endfor%}
-            </ul>
-            {% else %}
-            <h3> No Tasks </h3>
-        {% endif %}
-        <a href={% url 'work:create' %} class="btn btn-primary">Add a Task<a>
-    </div>
-
     <div class="container m-5 p-2 rounded mx-auto bg-light shadow">
         <!-- App title section -->
         <div class="row m-1 p-4">
@@ -53,7 +25,8 @@
                         <i class="fa fa-calendar-times-o my-2 px-1 text-danger btn clear-due-date-button d-none" data-toggle="tooltip" data-placement="bottom" title="Clear Due date"></i>
                     </div>
                     <div class="col-auto px-0 mx-0 mr-2">
-                        <button type="button" class="btn btn-primary">Add</button>
+                        <a href={% url 'MyTM:create' %} class="btn btn-primary">Add a Task<a>
+
                     </div>
                 </div>
             </div>
@@ -84,46 +57,47 @@
         <div class="row mx-1 px-5 pb-3 w-80">
             <div class="col mx-auto">
                 {% if  tasks %}
+                <!-- Todo Item -->
                 
                     {% for task in tasks %}
-                        <!-- Todo Item -->
-                        <div class="row px-3 align-items-center todo-item rounded">
-                    <div class="col-auto m-1 p-0 d-flex align-items-center">
-                        <h2 class="m-0 p-0">
-                            <i class="fa fa-square text-primary btn m-0 p-0" data-toggle="tooltip" data-placement="bottom" title="Mark as complete"></i>
-                            <i class="fa fa-check-square text-primary btn m-0 p-0 d-none" data-toggle="tooltip" data-placement="bottom" title="Mark as todo"></i>
-                        </h2>
-                    </div>
-                    <div class="col px-1 m-1 d-flex align-items-center">
-                        <input type="text" class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly value="{{ task.title }}" title="{{ task.title }}" />
-                        <input type="text" class="form-control form-control-lg border-0 edit-todo-input rounded px-3 d-none" value="{{ task.title }}" />
-                    </div>
-                    <div class="col-auto m-1 p-0 px-3">
-                        <div class="row">
-                            <div class="col-auto d-flex align-items-center rounded bg-white border border-warning">
-                                <i class="fa fa-hourglass-2 my-2 px-2 text-warning btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
-                                <h6 class="text my-2 pr-2">{{ task.due_date}}</h6>
+                        <div class="row px-3 align-items-center todo-item border rounded" style="cursor:pointer">
+                            <div class="col-auto m-1 p-0 d-flex align-items-center">
+                                <h2 class="m-0 p-0">
+                                    <i class="fa fa-square text-primary btn m-0 p-0" data-toggle="tooltip" data-placement="bottom" title="Mark as complete"></i>
+                                    <i class="fa fa-check-square text-primary btn m-0 p-0 d-none" data-toggle="tooltip" data-placement="bottom" title="Mark as todo"></i>
+                                </h2>
+                            </div>
+                            <div class="col px-1 m-1 d-flex align-items-center">
+                            
+                                <input class="form-control form-control-lg border-0 edit-todo-input bg-transparent rounded px-3" readonly value="{{ task.title}}" data-target="{% url 'MyTM:detail' task.id %}">
+                                <input type="text" class="form-control form-control-lg border-0 edit-todo-input rounded px-3 d-none" value="{{ task.title }}" />
+                            </div>
+                            <div class="col-auto m-1 p-0 px-3">
+                                <div class="row">
+                                    <div class="col-auto d-flex align-items-center rounded bg-white border border-warning">
+                                        <i class="fa fa-hourglass-2 my-2 px-2 text-warning btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
+                                        <h6 class="text my-2 pr-2">{{ task.due_date}}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-auto m-1 p-0 todo-actions">
+                            <div class="row d-flex flex-row align-items-center justify-content-end">
+                                <h5 class="m-0 p-0 px-2">
+                                    <i class="fa fa-pencil text-info btn m-0 p-0" data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
+                                </h5>
+                                <h5 class="m-0 p-0 px-2">
+                                    <i class="fa fa-trash text-danger btn m-0 p-0" data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
+                                </h5>
+                            </div>
+                            <div class="row todo-created-info">
+                                <div class="col-auto d-flex align-items-center pr-2">
+                                    <i class="fa fa-info-circle my-2 px-2 text-black-50 btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
+                                    <label class="date-label my-2 text-black-50">28th Jun 2020</label>
+                                </div>
+                            </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-auto m-1 p-0 todo-actions">
-                        <div class="row d-flex flex-row align-items-center justify-content-end">
-                            <h5 class="m-0 p-0 px-2">
-                                <i class="fa fa-pencil text-info btn m-0 p-0" data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
-                            </h5>
-                            <h5 class="m-0 p-0 px-2">
-                                <i class="fa fa-trash text-danger btn m-0 p-0" data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
-                            </h5>
-                        </div>
-                        <div class="row todo-created-info">
-                            <div class="col-auto d-flex align-items-center pr-2">
-                                <i class="fa fa-info-circle my-2 px-2 text-black-50 btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Created date"></i>
-                                <label class="date-label my-2 text-black-50">28th Jun 2020</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {%endfor%}
+                    {%endfor%}
                 {% else %}
                 <h3>No Tasks</h3>
                 {%endif%}
