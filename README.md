@@ -1,5 +1,10 @@
 # Django Tasks Manager App (under development)
 
+## Upcoming Features
+1. UI changes and fixes
+2. User login, account and feature
+3. Rest API feature
+
 ## Features
 
 1. Create Task add multiple images and due date
