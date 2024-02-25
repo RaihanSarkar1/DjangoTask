@@ -17,7 +17,7 @@
 
 ### Prequisites to install
 1. python
-2. postgres
+2. postgresSQL
 
 ### First create the virtul env use the following code
 To create the virtual env run this in the project folder
