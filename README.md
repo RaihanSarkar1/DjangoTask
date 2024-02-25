@@ -26,10 +26,6 @@ After creating the virtual environment activate the virtual environment
 
 You will see the environment name in the command prompt
 
-### Now install django
-
-- pip install django==5.0.2
-
 ### Now clone this repository
 - git clone https://github.com/RaihanSarkar1/DjangoTask.git
 
