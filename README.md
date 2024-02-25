@@ -15,12 +15,14 @@
 
 ## How to run the project
 
+### Install python if not present
+
 ### First create the virtul env use the following code
-To create the virtual env run
+To create the virtual env run this in the project folder
 - py - m venv <env_name>
 
-After creating the virtual environment run it
--<env_name>\Scripts\activate.bat
+After creating the virtual environment activate the virtual environment
+- <env_name>\Scripts\activate
 
 You will see the environment name in the command prompt
 
