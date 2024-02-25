@@ -15,7 +15,9 @@
 
 ## How to run the project
 
-### Install python if not present
+### Prequisites to install
+1. python
+2. postgres
 
 ### First create the virtul env use the following code
 To create the virtual env run this in the project folder
