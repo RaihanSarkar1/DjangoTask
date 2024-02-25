@@ -15,18 +15,18 @@
 
 ## How to run the project
 
+### Prequisites to install
+1. python
+2. postgresSQL
+
 ### First create the virtul env use the following code
-To create the virtual env run
+To create the virtual env run this in the project folder
 - py - m venv <env_name>
 
-After creating the virtual environment run it
--<env_name>\Scripts\activate.bat
+After creating the virtual environment activate the virtual environment
+- <env_name>\Scripts\activate
 
 You will see the environment name in the command prompt
-
-### Now install django
-
-- pip install django==5.0.2
 
 ### Now clone this repository
 - git clone https://github.com/RaihanSarkar1/DjangoTask.git
@@ -37,7 +37,7 @@ You will see the environment name in the command prompt
 ### Now install all requirements
 - pip install -r requirements.txt
 
-### setup your postgres server according to the settings.py
+### Setup your postgres server according to the settings.py
 
 ### Run migrations
 - py manage.py makemigrations
