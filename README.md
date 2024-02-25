@@ -37,7 +37,7 @@ You will see the environment name in the command prompt
 ### Now install all requirements
 - pip install -r requirements.txt
 
-### setup your postgres server according to the settings.py
+### Setup your postgres server according to the settings.py
 
 ### Run migrations
 - py manage.py makemigrations
