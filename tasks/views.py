@@ -56,7 +56,7 @@ def detail(request, id):
 def delete(request, id):
     thetask = Task.objects.get(pk=id)
     thetask.delete()
-    return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/tasks/')
 
 def update(request, id):
     if request.method == "POST":
