@@ -124,6 +124,13 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
     font-size: 16px;
 }
 
+.bg{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+}
+
 @media only screen and (max-width: 768px){
     .box-area{
         margin: 0px 10px;
@@ -133,6 +140,7 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
         height: 100px;
         overflow: hidden;
     }
+
 
     .right-box{
         padding: 20px;
