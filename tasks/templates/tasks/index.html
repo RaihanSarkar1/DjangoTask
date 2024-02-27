@@ -24,7 +24,7 @@
                         {% for task in tasks %}
                         <div class="todo-item">
                             <div class="checker"><span class=""><input type="checkbox"></span></div>
-                            <span>{{ task.title }}</span>
+                            <a href="{% url 'mylist:detail' task.id %}" class="text-decoration-none fs-6 p-2"><span>{{ task.title }}</span></a>
                             <a href="javascript:void(0);" class="float-end remove-todo-item"><i class="fa-solid fa-xmark"></i></a>
                         </div>
                         {% endfor %}

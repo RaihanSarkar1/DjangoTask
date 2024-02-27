@@ -3,6 +3,10 @@ body{
     background: #f8f8f8;
 }
 
+.pad {
+    padding: 30px;
+}
+
 .todo-nav {
     margin-top: 10px
 }
@@ -98,4 +102,11 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
     background: #fff;
     border-radius: calc(.15rem - 1px);
     box-shadow: 0 1px 15px rgba(0,0,0,0.04), 0 1px 6px rgba(0,0,0,0.04);
+}
+
+@media(max-width: 991px){
+    .sidebar{
+        background-color: rgba(255,255,255,0.15);
+        backdrop-filter: blur(10px);
+    }
 }
