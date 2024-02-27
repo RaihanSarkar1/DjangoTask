@@ -1,6 +1,7 @@
 body{
     margin-top:20px;
-    background: #f8f8f8;
+    background: #ececec;
+    font-family: 'Poppins', sans-serif;
 }
 
 .pad {
@@ -108,5 +109,32 @@ div.button, div.checker, div.radio, div.selector, div.uploader {
     .sidebar{
         background-color: rgba(255,255,255,0.15);
         backdrop-filter: blur(10px);
+    }
+}
+
+.box-area{
+    width: 930px;
+}
+
+.right-box{
+    padding: 40px 30px 40px 40px;
+}
+
+::placeholder{
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 768px){
+    .box-area{
+        margin: 0px 10px;
+    }
+
+    .left-box{
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .right-box{
+        padding: 20px;
     }
 }

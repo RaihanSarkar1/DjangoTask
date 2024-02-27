@@ -17,6 +17,9 @@ def index(request):
     }
     return render(request,"tasks/index.html", context)
 
+def login(request):
+    return render(request,"tasks/login.html")
+
     
 
 def create(request):
