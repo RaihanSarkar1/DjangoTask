@@ -6,7 +6,8 @@ from . import views
 app_name = "mylist"
 urlpatterns = [
     path("", views.index, name="index"),
-    path("login", views.login, name="login"),
+    path("login/", views.login_user, name="login"),
+    path("logout/", views.logout, name="logout"),
     path("create", views.create, name="create"),
     path("<int:id>/detail", views.detail, name="detail"),
     path("<int:id>/delete", views.delete, name="delete"),

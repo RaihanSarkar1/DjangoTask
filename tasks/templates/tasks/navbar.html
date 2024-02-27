@@ -19,7 +19,7 @@
               <a class="nav-link active mx-2" aria-current="page" href="{% url 'mylist:index'%}">Home</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="{% url 'mylist:create' %}">Create Task</a>
+              <a class="nav-link" href="{% url 'mylist:create' %}">Add Task</a>
             </li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="#about">About</a>
@@ -31,8 +31,12 @@
           </ul>
           {% comment %} login|Signup {% endcomment %}
           <div class="d-flex gap-3 flex-column flex-lg-row justify-content-center align-items-center">
+              {% if request.user.is_authenticated %}
+              <a href="{% url 'mylist:logout' %}" class="text-white text-decoration-none">Logout</a>
+              {% else %}
               <a href="{% url 'mylist:login' %}" class="text-white text-decoration-none">Login</a>
               <a href="" class="text-white text-decoration-none px-3 py-1 rounded-5 bg-primary" style="backgroun: #f94ca4;">Signup</a>
+              {% endif %}
               
           </div>
         </div>

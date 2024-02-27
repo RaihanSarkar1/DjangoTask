@@ -4,6 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout as auth_logout
+from django.contrib import messages
 
 from .serializers import TaskSerializer
 
@@ -17,8 +20,32 @@ def index(request):
     }
     return render(request,"tasks/index.html", context)
 
-def login(request):
-    return render(request,"tasks/login.html")
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(username = username, password = password)
+        if user:
+            login(request, user)
+            tasks = Task.objects.all()
+            context = {
+                'tasks': tasks,
+            }
+            return render(request,"tasks/index.html", context)
+        else:
+            messages.success(request,("There was a problem logging in, Try Again.."))
+            return render(request,"authenticate/login.html")
+    else:
+        return render(request,"authenticate/login.html")
+    
+        
+
+
+def logout(request):
+    auth_logout(request)
+    return HttpResponseRedirect(reverse("mylist:index"),{
+            'success': "Logged out Sucessfully",
+        })
 
     
 
