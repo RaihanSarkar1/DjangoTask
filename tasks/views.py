@@ -14,7 +14,8 @@ from .models import Image, Task
 
 # Create your views here.
 def index(request):
-    tasks = Task.objects.all()
+    user = request.user.id
+    tasks = Task.objects.filter(user=user)
     context = {
         'tasks': tasks,
     }
@@ -22,7 +23,7 @@ def index(request):
 
 def login_user(request):
     if request.method == 'POST':
-        username = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username = username, password = password)
         if user:
@@ -51,13 +52,14 @@ def logout(request):
 
 def create(request):
     if request.method == "POST":
+        user = request.user
         title = request.POST['title']
         description = request.POST['description']
         date = request.POST['date']
         priority = request.POST['priority']
         uploaded_images = request.FILES.getlist('images')  
         print(uploaded_images)
-        task = Task(title=title,description=description,due_date=date,priority=priority)
+        task = Task(title=title,description=description,due_date=date,priority=priority,user=user)
         task.save()
         for image in uploaded_images:
             # Handle upload of images
