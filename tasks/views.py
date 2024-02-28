@@ -47,6 +47,9 @@ def logout(request):
     return HttpResponseRedirect(reverse("mylist:index"),{
             'success': "Logged out Sucessfully",
         })
+    
+def signup(request):
+    return render(request,"tasks/signup.html")
 
     
 

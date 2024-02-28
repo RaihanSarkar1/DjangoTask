@@ -17,6 +17,18 @@
                         <li role="presentation" class="nav-item all-task active"><a href="#" class="nav-link">All</a></li>
                         <li role="presentation" class="nav-item active-task"><a href="#" class="nav-link">Active</a></li>
                         <li role="presentation" class="nav-item completed-task"><a href="#" class="nav-link">Completed</a></li>
+                        <li role="presentation" class="nav-item priority">
+                            <div class="dropdown border-0 p-.5">
+                                <a class="nav-link dropdown-toggle border-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Priority
+                                </a>
+                              
+                                <ul class="dropdown-menu">
+                                  <li><a class="dropdown-item" href="#">High to low</a></li>
+                                  <li><a class="dropdown-item" href="#">Low to high</a></li>
+                                </ul>
+                              </div>
+                        </li>
                     </ul>
                     <div class="todo-list">
                         {% if tasks %}
@@ -26,6 +38,7 @@
                             <div class="checker"><span class=""><input type="checkbox"></span></div>
                             <a href="{% url 'mylist:detail' task.id %}" class="text-decoration-none fs-6 p-2"><span>{{ task.title }}</span></a>
                             <a href="javascript:void(0);" class="float-end remove-todo-item"><i class="fa-solid fa-xmark"></i></a>
+                            
                         </div>
                         {% endfor %}
                         {% else %}

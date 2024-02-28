@@ -25,7 +25,7 @@
               <a class="nav-link" href="#about">About</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="#about">About</a>
+              <a class="nav-link" href="#about"></a>
             </li>
             
           </ul>
@@ -35,7 +35,7 @@
               <a href="{% url 'mylist:logout' %}" class="text-white text-decoration-none">Logout</a>
               {% else %}
               <a href="{% url 'mylist:login' %}" class="text-white text-decoration-none">Login</a>
-              <a href="" class="text-white text-decoration-none px-3 py-1 rounded-5 bg-primary" style="backgroun: #f94ca4;">Signup</a>
+              <a href="{% url 'mylist:signup' %}" class="text-white text-decoration-none px-3 py-1 rounded-5 bg-primary" style="backgroun: #f94ca4;">Signup</a>
               {% endif %}
               
           </div>
