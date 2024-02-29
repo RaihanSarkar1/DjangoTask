@@ -1,14 +1,12 @@
 # Django Tasks Manager App (under development)
 
 ## Upcoming Features
-1. UI changes and fixes
-2. User login, account and feature
-3. Rest API feature
+1. Rest API feature
 
 ## Features
 
 1. Create Task add multiple images and due date
-2. View All Tasks
+2. View All Tasks of a user
 3. Delete or Edit and existing task
 4. View details of a task
 5. Set priority of a task
