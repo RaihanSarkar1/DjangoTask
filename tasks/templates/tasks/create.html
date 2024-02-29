@@ -3,85 +3,102 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'tasks/datepicker/css/bootstrap-datepicker.min.css' %}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 {% endblock %}
 {% block body %}
 
 
-        <h2><a href=" {% url 'mylist:index' %}">Back to All Tasks<a></h2>
+<h2><a href=" {% url 'mylist:index' %}">Back to All Tasks<a></h2>
 
-    <div class="container">
-        <div class="row justify-content-center my-5">
-            <div class="col-lg-6">
-                <h1>Create A Tasks:</h1>
-                <form action="{% url 'mylist:create' %}" method="post" class="border p-5" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <fieldset>
-                        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Title</label><br>
-                            <input type="text" class="form-control" name="title" id="title"></input>
-                        </div>
-                        <div class="mb-3">
-                            <label for="description" class="form-label">Description</label><br>
-                            <textarea type="text" class="form-control" name="description" id="description"></textarea>
-                        </div>
-                        <div class="input-group mb-3">
-                
-                            <div class="row">
-                                <div>
-                                    <label class="custom-file-label" for="imageInput">Choose Image</label>
-                                </div>
-                                <div class="custom-file mt-3">
-                                    <input type="file" class="custom-file-input" id="imageInput" name="images" aria-describedby="imageAddon" multiple accept="image/jpeg">
-                                </div>
-                            </div>
-                
-                        </div>
-                        <div class='col-md-12 mb-3'>
-                               <label class="control-label">Due Date</label>
-                               <div class="mb-4 input-group">
-                                   <span class='input-group date' id='datetimepicker1'>
-                                       <input type='text' class="form-control" name="date" id="datepicker" />
-                                       <span class="input-group-text "><i class="bi bi-calendar-date-fill"></i></span>
-                                   </span>
-                               </div>
-                        </div>
-                
-                        <div class="">
-                            <label class="control-label">Priority</label>
-                            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                <input type="radio" class="btn-check" name="priority" id="priority1" value="LOW" autocomplete="off" checked>
-                                <label class="btn btn-outline-primary" for="priority1">Low</label>
-                
-                                <input type="radio" class="btn-check" name="priority" id="priority2" value="MEDIUM" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="priority2">Normal</label>
-                
-                                <input type="radio" class="btn-check" name="priority" id="priority3" value="HIGH" autocomplete="off">
-                                <label class="btn btn-outline-primary" for="priority3">High</label>
-                              </div>
-                        </div>
-                
-                
-                
-                    </fieldset>
-                    <div class="mb-3 mt-3">
-                        <button type="submit" class="btn btn-success">Add Task</button>
+<div class="container">
+    <div class="row justify-content-center my-5">
+        <div class="col-lg-6">
+            <h1 class="text-center">Create A Tasks:</h1>
+            <form action="{% url 'mylist:create' %}" method="post" class="border p-5" enctype="multipart/form-data">
+                {% csrf_token %}
+                <fieldset class="mb-5">
+                    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label><br>
+                        <input type="text" class="form-control" name="title" id="title"></input>
                     </div>
-                </form>
-            </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label><br>
+                        <textarea type="text" class="form-control" name="description" id="description"></textarea>
+                    </div>
+                    <div class="input-group mb-3">
+
+                        <div class="row">
+                            <div>
+                                <label class="custom-file-label" for="imageInput">Choose Image</label>
+                            </div>
+                            <div class="custom-file mt-3">
+                                <input type="file" class="custom-file-input" id="imageInput" name="images"
+                                    aria-describedby="imageAddon" multiple accept="image/jpeg">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-center align-items-center mb-3">
+                        <div class='col'>
+                            <label class="control-label">Due Date</label>
+                            <div class="mb-4 input-group">
+                                <span class='input-group date' id='datetimepicker1'>
+                                    <input type='text' class="form-control" name="date" id="datepicker" />
+                                    <span class="input-group-text "><i class="bi bi-calendar-date"></i></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class='col'>
+                            <label class="control-label">Time</label>
+                            <div class="mb-4 input-group">
+                                <input class="form-control" type="text" id="time" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="">
+                        <label class="control-label">Priority</label>
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="priority" id="priority1" value="LOW"
+                                autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="priority1">Low</label>
+
+                            <input type="radio" class="btn-check" name="priority" id="priority2" value="MEDIUM"
+                                autocomplete="off">
+                            <label class="btn btn-outline-primary" for="priority2">Normal</label>
+
+                            <input type="radio" class="btn-check" name="priority" id="priority3" value="HIGH"
+                                autocomplete="off">
+                            <label class="btn btn-outline-primary" for="priority3">High</label>
+                        </div>
+                    </div>
+
+
+
+                </fieldset>
+                <div class=" text-center">
+                    <button type="submit" class="btn btn-success">Add Task</button>
+                </div>
+            </form>
         </div>
+    </div>
 
-{% endblock %}
+    {% endblock %}
 
-{% block scripts%}
-<script src="{% static 'tasks/datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+    {% block scripts%}
+    <script src="{% static 'tasks/datepicker/js/bootstrap-datepicker.min.js' %}"></script>
 
-<script>
-    $('.date').datepicker({
-        autoclose: true,
-        format: 'yyyy-mm-dd',
-        todayHighlight: true,
-    });
-</script>
+    <script>
+        $('.date').datepicker({
+            autoclose: true,
+            format: 'yyyy-mm-dd',
+            todayHighlight: true,
+        });
 
-{% endblock %}
+        $('#time').datetimepicker({
+            format: 'hh:mm:ss a'
+        });
+    </script>
+
+    {% endblock %}
