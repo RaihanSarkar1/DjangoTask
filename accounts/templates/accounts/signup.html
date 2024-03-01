@@ -3,24 +3,53 @@
 {% block body %}
 
 <div class="container">
-    
+
     <div class="row justify-content-center my-5">
-        <div class="col-lg-6 border p-4">
-            <div class="text-center mb-3">
+        <div class="col-lg-4 border p-4">
+            <div class="text-center mb-4">
                 <h2>Sign up</h2>
             </div>
-            <form action="">
-                <label for="email" class="form-label">Email Address:</label>
-                <input type="email" class="form-control mb-3" id="email" name="email" placeholder="e.g: Someone@gmail.com">
+            <form action="" method="post">
+                {% csrf_token %}
 
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control mb-3" id="name" name="name" placeholder="e.g: Mario">
 
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control mb-3" id="password" name="password">
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    {{ form.username}}
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                    {{ form.email}}
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    {{ form.password1}}
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                    {{ form.password2}}
+                </div>
+
+                {% if form.errors %}
+                {% for field in form %}
+                {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+                {% endfor %}
+                {% endif %}
 
                 <div class="mb-4 text-center">
-                    <button type="submit" class="btn btn-secondary">Submit</button>
+                    <button type="submit" class="btn btn-secondary">Sign Up</button>
                 </div>
             </form>
         </div>
@@ -32,6 +61,16 @@
 
 {% block scripts %}
 <script>
+    var form_fields = document.getElementsByTagName('input');
 
+    form_fields[1].placeholder = 'Username';
+    form_fields[2].placeholder = 'Email';
+    form_fields[3].placeholder = 'Password';
+    form_fields[4].placeholder = 'Confirm Password';
+
+    form_fields[1].classList.add('form-control');
+    form_fields[2].classList.add('form-control');
+    form_fields[3].classList.add('form-control');
+    form_fields[4].classList.add('form-control');
 </script>
 {% endblock %}

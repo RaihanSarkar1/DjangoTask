@@ -1,10 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout as auth_logout
+from accounts.models import CustomUser
 from tasks.models import Task
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
+# from django.contrib.auth.forms import UserCreationForm
+from .forms import CreateUserForm
 
 
 
@@ -37,4 +40,17 @@ def logout(request):
         })
     
 def signup(request):
-    return render(request,"accounts/signup.html")
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+        
+            return HttpResponseRedirect(reverse("account:login"),{
+                'success': "Registration Sucessful. Login to access",
+            })
+        
+        
+    form = CreateUserForm()
+    return render(request,"accounts/signup.html", {
+        'form': form,
+    })
