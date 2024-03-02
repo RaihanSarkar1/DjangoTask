@@ -7,7 +7,7 @@ from tasks.models import Task
 from django.contrib import messages
 from django.http import HttpResponse, HttpResponseRedirect
 # from django.contrib.auth.forms import UserCreationForm
-from .forms import CreateUserForm
+from . forms import CreateUserForm
 
 
 
@@ -40,17 +40,19 @@ def logout(request):
         })
     
 def signup(request):
+    form = CreateUserForm()
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            form.save()
         
+        
+            
             return HttpResponseRedirect(reverse("account:login"),{
-                'success': "Registration Sucessful. Login to access",
+            'success': "Registration Successful. Login to continue.",
             })
         
         
-    form = CreateUserForm()
     return render(request,"accounts/signup.html", {
         'form': form,
     })
