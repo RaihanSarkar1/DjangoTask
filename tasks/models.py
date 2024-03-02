@@ -1,6 +1,6 @@
 from django.db import models
 
-from accounts.models import CustomUser
+from django.conf import settings
 
 # Create your models here.
 class Task(models.Model):
@@ -16,7 +16,7 @@ class Task(models.Model):
     priority = models.CharField(max_length=6, choices=priority_choices, default='LOW')
     complete = models.BooleanField(default=False)
     
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title

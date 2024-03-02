@@ -18,12 +18,7 @@ def login_user(request):
         password = request.POST['password']
         user = authenticate(username = username, password = password)
         if user:
-            login(request, user)
-            tasks = Task.objects.all()
-            context = {
-                'tasks': tasks,
-            }
-            return render(request,"tasks/index.html", context)
+            return redirect('mylist:index')
         else:
             messages.success(request,("There was a problem logging in, Try Again.."))
             return render(request,"accounts/login.html")
