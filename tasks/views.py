@@ -1,11 +1,10 @@
 from django.urls import reverse
-from accounts.models import CustomUser
 from rest_framework import generics
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from rest_framework import serializers
+from django.contrib.auth import get_user_model
 
 from .serializers import TaskSerializer
 
@@ -25,15 +24,14 @@ def index(request):
 
 def create(request):
     if request.method == "POST":
-        user = request.user.id
-        c_user = CustomUser.objects.get(id=user)
+        user = request.user
         title = request.POST['title']
         description = request.POST['description']
         date = request.POST['date']
         priority = request.POST['priority']
         uploaded_images = request.FILES.getlist('images')  
         print(uploaded_images)
-        task = Task(title=title,description=description,due_date=date,priority=priority,user=c_user)
+        task = Task(title=title,description=description,due_date=date,priority=priority,user=user)
         task.save()
         for image in uploaded_images:
             # Handle upload of images

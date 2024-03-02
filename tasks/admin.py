@@ -1,6 +1,4 @@
 from django.contrib import admin
-
-from accounts.models import CustomUser
 from .models import Task, Image
 # Register your models here.
 class ImageAdmin(admin.StackedInline):
@@ -16,5 +14,3 @@ class TaskAdmin(admin.ModelAdmin):
 @admin.register(Image)
 class TaskImageAdmin(admin.ModelAdmin):
     pass
-
-admin.site.register(CustomUser)
