@@ -75,7 +75,7 @@ def update(request, id):
             # Handle upload of images
             print(image,uploaded_images)
             new_image = Image.objects.create(
-                task= task,
+                task= task_obj,
                 images = image,
             )
             
