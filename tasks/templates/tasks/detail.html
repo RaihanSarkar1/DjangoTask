@@ -16,7 +16,7 @@
                         <h6>Priority: </h6>
                         <div class="col-auto d-flex align-items-center rounded bg-white mb-3">
                             <i class="fa fa-list-ol my-2 px-2 text-info btn" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Due on date"></i>
-                            <h6 class="text my-2 pr-2">{{ task.priority}}</h6>
+                            <h6 class="text my-2 pr-2">{% if task.priority == 1 %}High{% elif task.priority == 2 %}Medium {% else %} Low{% endif %}</h6>
                         </div>
                         <h6>Created At: </h6>
                         <div class="col-auto d-flex align-items-center rounded bg-white border border-info">
