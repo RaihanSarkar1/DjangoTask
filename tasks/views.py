@@ -13,14 +13,23 @@ from .models import Image, Task
 # Create your views here.
 def index(request):
     user = request.user.id
-    tasks = Task.objects.filter(user=user)
+    tasks = Task.objects.filter(user=user).order_by('priority')
     context = {
         'tasks': tasks,
     }
     return render(request,"tasks/index.html", context)
 
-
-    
+def sortByPrio(request, id):
+    user = request.user.id
+    if id == 3:
+        tasks = Task.objects.filter(user=user).order_by('-priority')
+    elif id == 1:
+        tasks = Task.objects.filter(user=user).order_by('priority')
+    context = {
+        'tasks': tasks,
+    }
+    return render(request,"tasks/index.html", context)
+        
 
 def create(request):
     if request.method == "POST":

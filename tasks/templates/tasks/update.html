@@ -52,13 +52,13 @@
                     <div class="">
                         <label class="control-label">Priority</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="priority" id="priority1" value="LOW" autocomplete="off" {% if task.priority == 'LOW' %}checked{% endif %}>
+                            <input type="radio" class="btn-check" name="priority" id="priority1" value="3" autocomplete="off" {% if task.priority == 'LOW' %}checked{% endif %}>
                             <label class="btn btn-outline-primary" for="priority1">Low</label>
             
-                            <input type="radio" class="btn-check" name="priority" id="priority2" value="MEDIUM" autocomplete="off" {% if task.priority == 'MEDIUM' %}checked{% endif %}>
+                            <input type="radio" class="btn-check" name="priority" id="priority2" value="2" autocomplete="off" {% if task.priority == 'MEDIUM' %}checked{% endif %}>
                             <label class="btn btn-outline-primary" for="priority2">Normal</label>
             
-                            <input type="radio" class="btn-check" name="priority" id="priority3" value="HIGH" autocomplete="off" {% if task.priority == 'HIGH' %}checked{% endif %}>
+                            <input type="radio" class="btn-check" name="priority" id="priority3" value="1" autocomplete="off" {% if task.priority == 'HIGH' %}checked{% endif %}>
                             <label class="btn btn-outline-primary" for="priority3">High</label>
                           </div>
                     </div>
