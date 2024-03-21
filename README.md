@@ -26,13 +26,13 @@ After creating the virtual environment activate the virtual environment
 
 You will see the environment name in the command prompt
 
-### Now clone this repository
+### Clone this repository
 - git clone https://github.com/RaihanSarkar1/DjangoTask.git
 
-### Now change pointer to project folder
+### Change pointer to project folder
 - cd djangotask
 
-### Now install all requirements
+### Install all requirements
 - pip install -r requirements.txt
 
 ### Setup your postgres server according to the settings.py
